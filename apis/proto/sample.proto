@@ -2,11 +2,15 @@ syntax = "proto3";
 
 package sample;
 
+option go_package = "github.com/rinx/ci-proto-sandbox/apis/generated";
+
 import "google/api/annotations.proto";
+import "pb/gql.proto";
 
 service Sample {
     rpc Search(Empty) returns(Empty) {
         option (google.api.http).get = "/v1/search";
+        option (gql.rpc_type) = QUERY;
     }
 }
 
