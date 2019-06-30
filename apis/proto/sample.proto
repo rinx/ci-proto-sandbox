@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package sample;
+
+import "google/api/annotations.proto";
+
+service Sample {
+    rpc Search(Empty) returns(Empty) {
+        option (google.api.http).get = "/v1/search";
+    }
+}
+
+message Empty {}
