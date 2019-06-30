@@ -48,13 +48,13 @@ clean:
 
 deps: \
     $(GOPATH)/src/github.com/protocolbuffers/protobuf \
-    $(GOPATH)/src/github.com/golang/protobuf/protoc-gen-go \
-    $(GOPATH)/src/github.com/gogo/protobuf/protoc-gen-gofast \
-    $(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
-    $(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
-    $(GOPATH)/src/github.com/danielvladco/go-proto-gql/protoc-gen-gql \
-    $(GOPATH)/src/github.com/danielvladco/go-proto-gql/protoc-gen-gogqlgen \
-    $(GOPATH)/src/github.com/danielvladco/go-proto-gql/protoc-gen-gqlgencfg
+    $(GOPATH)/bin/protoc-gen-go \
+    $(GOPATH)/bin/protoc-gen-gofast \
+    $(GOPATH)/bin/protoc-gen-grpc-gateway \
+    $(GOPATH)/bin/protoc-gen-swagger \
+    $(GOPATH)/bin/protoc-gen-gql \
+    $(GOPATH)/bin/protoc-gen-gogqlgen \
+    $(GOPATH)/bin/protoc-gen-gqlgencfg
 
 $(GOPATH)/src/github.com/protocolbuffers/protobuf:
 	git clone \
@@ -62,25 +62,25 @@ $(GOPATH)/src/github.com/protocolbuffers/protobuf:
 	    https://github.com/protocolbuffers/protobuf \
 	    $(GOPATH)/src/github.com/protocolbuffers/protobuf
 
-$(GOPATH)/src/github.com/golang/protobuf/protoc-gen-go:
+$(GOPATH)/bin/protoc-gen-go:
 	$(call go-get, github.com/golang/protobuf/protoc-gen-go)
 
-$(GOPATH)/src/github.com/gogo/protobuf/protoc-gen-gofast:
+$(GOPATH)/bin/protoc-gen-gofast:
 	$(call go-get, github.com/gogo/protobuf/protoc-gen-gofast)
 
-$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway:
+$(GOPATH)/bin/protoc-gen-grpc-gateway:
 	$(call go-get, github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway)
 
-$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger:
+$(GOPATH)/bin/protoc-gen-swagger:
 	$(call go-get, github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger)
 
-$(GOPATH)/src/github.com/danielvladco/go-proto-gql/protoc-gen-gql:
+$(GOPATH)/bin/protoc-gen-gql:
 	$(call go-get, github.com/danielvladco/go-proto-gql/protoc-gen-gql)
 
-$(GOPATH)/src/github.com/danielvladco/go-proto-gql/protoc-gen-gogqlgen:
+$(GOPATH)/bin/protoc-gen-gogqlgen:
 	$(call go-get, github.com/danielvladco/go-proto-gql/protoc-gen-gogqlgen)
 
-$(GOPATH)/src/github.com/danielvladco/go-proto-gql/protoc-gen-gqlgencfg:
+$(GOPATH)/bin/protoc-gen-gqlgencfg:
 	$(call go-get, github.com/danielvladco/go-proto-gql/protoc-gen-gqlgencfg)
 
 apis/generated:
