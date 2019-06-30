@@ -180,10 +180,10 @@ workflows:
   build:
     jobs:
       - protoc:
-        filters:
-          branches:
-            only:
-              - master
+          filters:
+            branches:
+              only:
+                - master
       - versioning:
           filters:
             branches:
