@@ -6,6 +6,7 @@ option go_package = "github.com/rinx/ci-proto-sandbox/apis/generated";
 
 import "google/api/annotations.proto";
 import "pb/gql.proto";
+import "validate/validate.proto";
 
 service Sample {
     rpc Search(Empty) returns(Empty) {

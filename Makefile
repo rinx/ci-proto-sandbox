@@ -30,6 +30,7 @@ define protoc-gen
 		-I $(GOPATH)/src/github.com/protocolbuffers/protobuf/src \
 		-I $(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
 		-I $(GOPATH)/src/github.com/danielvladco/go-proto-gql \
+		-I ${GOPATH}/src/github.com/envoyproxy/protoc-gen-validate \
 		$1 \
 		./apis/proto/*.proto
 endef
@@ -54,7 +55,9 @@ deps: \
     $(GOPATH)/bin/protoc-gen-swagger \
     $(GOPATH)/bin/protoc-gen-gql \
     $(GOPATH)/bin/protoc-gen-gogqlgen \
-    $(GOPATH)/bin/protoc-gen-gqlgencfg
+    $(GOPATH)/bin/protoc-gen-gqlgencfg \
+    $(GOPATH)/bin/protoc-gen-validate \
+    $(GOPATH)/bin/prototool
 
 $(GOPATH)/src/github.com/protocolbuffers/protobuf:
 	git clone \
@@ -82,6 +85,12 @@ $(GOPATH)/bin/protoc-gen-gogqlgen:
 
 $(GOPATH)/bin/protoc-gen-gqlgencfg:
 	$(call go-get, github.com/danielvladco/go-proto-gql/protoc-gen-gqlgencfg)
+
+$(GOPATH)/bin/protoc-gen-validate:
+	$(call go-get, github.com/envoyproxy/protoc-gen-validate)
+
+$(GOPATH)/bin/prototool:
+	$(call go-get, github.com/uber/prototool/cmd/prototool)
 
 apis/generated:
 	$(call mkdir, ./apis/generated)
