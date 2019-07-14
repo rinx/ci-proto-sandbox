@@ -2,7 +2,8 @@
     clean \
     deps \
     pbgo \
-    swagger
+    swagger \
+    graphql
 
 red    = /bin/echo -e "\x1b[31m\#\# $1\x1b[0m"
 green  = /bin/echo -e "\x1b[32m\#\# $1\x1b[0m"
