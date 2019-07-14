@@ -49,11 +49,13 @@ jobs:
           command: |
             PWD=`pwd`
             NEW_VERSION=`./orchis semver`
-            git diff --exit-code --quiet HEAD^ apis/proto || \
-            make && \
-            git add ./apis && \
-            git commit --allow-empty -m "[ci skip] :package: Updating compiled files." && \
-            git push git@github.com:${OWNER_NAME}/${REPO_NAME}.git master
+            git diff --exit-code --quiet HEAD^ apis/proto
+            if [[ $? -ne 0 ]]; then
+              make
+              git add ./apis
+              git commit -m "[ci skip] :package: Updating compiled files."
+              git push git@github.com:${OWNER_NAME}/${REPO_NAME}.git master
+            fi
             if [[ -n $NEW_VERSION ]]; then
               git tag ${NEW_VERSION}
               git push --tags
